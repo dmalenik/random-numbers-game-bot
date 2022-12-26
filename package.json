@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/dmalenik/random-numbers-game-bot/issues"
   },
-  "homepage": "https://github.com/dmalenik/random-numbers-game-bot#readme"
+  "homepage": "https://github.com/dmalenik/random-numbers-game-bot#readme",
+  "dependencies": {
+    "grammy": "^1.12.1"
+  }
 }
