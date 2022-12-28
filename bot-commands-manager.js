@@ -11,8 +11,8 @@ const deleteMyCommandsList = async () => {
 
   console.log(state);
 };
-const setMyCommandsList = async (...commands) => {
-  let response = await bot.api.setMyCommands([...commands]);
+const setMyCommandsList = async (commands) => {
+  let response = await bot.api.setMyCommands(commands);
   let myCommands = JSON.parse(JSON.stringify(response));
 
   console.log(myCommands);
