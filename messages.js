@@ -4,7 +4,17 @@ const { botCommandsHandlers } = require("./botCommandsHandlers.js");
 
 const [start, greeting, info, game] = commands;
 
-bot.command(start.command, (ctx) => botCommandsHandlers.handleStart(ctx));
-bot.command(info.command, (ctx) => botCommandsHandlers.handleInfo(ctx));
+bot.on("message", (ctx) => {
+  let text = ctx.message.text;
+  let chatId = ctx.chat.id;
+
+  if (text === `/${start.command}`) {
+    botCommandsHandlers.handleStart(ctx, chatId);
+  } else if (text === `/${info.command}`) {
+    botCommandsHandlers.handleInfo(ctx, chatId);
+  } else {
+    botCommandsHandlers.handleDefault(ctx, chatId);
+  }
+});
 
 bot.start();
