@@ -7,10 +7,7 @@ module.exports.botCommandsHandlers = {
     context.api.sendMessage(chatID, "Hi, Dima!");
   },
   handleInfo: function (context, chatID) {
-    context.api.sendMessage(
-      chatID,
-      `Your name is ${context.from.first_name} ${context.from.last_name}`
-    );
+    context.api.sendMessage(chatID, `Your name is ${context.from.first_name}`);
   },
   handleDefault: function (context, chatID) {
     context.api.sendMessage(chatID, "Sorry, I don't know this command");
