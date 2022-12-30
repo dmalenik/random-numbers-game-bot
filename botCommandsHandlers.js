@@ -15,13 +15,11 @@ const botCommandsHandlers = {
 
     DB[chatID] = randomNumber;
 
-    return setTimeout(
-      () =>
-        context.reply("Try to guess", {
-          reply_markup: gameOptions,
-        }),
-      100
-    );
+    return setTimeout(() => {
+      context.reply("Try to guess", {
+        reply_markup: gameOptions,
+      });
+    }, 100);
   },
   handleInfo: function (context) {
     context.reply(`Your name is ${context.from.first_name}`);
