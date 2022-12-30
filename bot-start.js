@@ -8,7 +8,7 @@ const [start, info, game] = commands;
 const { handleStart, handleInfo, handleDefault, handleGame } =
   botCommandsHandlers;
 
-bot.on("message", (ctx) => {
+bot.on(["::bot_command"], (ctx) => {
   let text = ctx.message.text;
   let chatId = ctx.chat.id;
 
@@ -26,5 +26,6 @@ bot.on("message", (ctx) => {
       handleDefault(ctx);
   }
 });
+bot.on("message", (ctx) => handleDefault(ctx));
 
 bot.start();
