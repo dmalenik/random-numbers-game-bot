@@ -26,4 +26,10 @@ bot.on(["::bot_command", "message:text"], (ctx) => {
   }
 });
 
+bot.callbackQuery("/game", (ctx) => {
+  let chatId = ctx.chat.id;
+
+  return handleGame(ctx, chatId, gameOptions, DB);
+});
+
 bot.start();

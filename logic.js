@@ -21,26 +21,19 @@ const logic = {
       });
     }, 100);
   },
-  handleGameCallbackQuery: function (context, row, column, DB, gameOptions) {
-    let text =
+  handleGameCallbackQuery: function (context, row, column, DB, tryAgain) {
+    let button =
       context.update.callback_query.message.reply_markup.inline_keyboard[row][
         column
-      ].text;
+      ];
+    let text = button.text;
     let current = parseInt(text, 10);
     let [toCompare] = Object.values(DB);
-
     if (current === toCompare) {
       context.reply("You win!");
-      return setTimeout(
-        () => context.reply("Try again", { reply_markup: callStart }),
-        300
-      );
     } else {
       context.reply("You lose!");
-      return setTimeout(
-        () => context.reply("Try again", { reply_markup: gameOptions }),
-        300
-      );
+      context.reply("Try again", { reply_markup: tryAgain });
     }
   },
   handleInfo: function (context) {
