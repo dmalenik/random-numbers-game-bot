@@ -1,4 +1,4 @@
-const handlers = {
+const logic = {
   handleStart: function (context, chatID) {
     context.api.sendPhoto(
       chatID,
@@ -21,6 +21,20 @@ const handlers = {
       });
     }, 100);
   },
+  handleGameCallbackQuery: function (context, row, column, DB) {
+    let text =
+      context.update.callback_query.message.reply_markup.inline_keyboard[row][
+        column
+      ].text;
+    let current = parseInt(text, 10);
+    let [toCompare] = Object.values(DB);
+
+    if (current === toCompare) {
+      context.reply("You win!");
+    } else {
+      context.reply("You lose!");
+    }
+  },
   handleInfo: function (context) {
     context.reply(`Your name is ${context.from.first_name}`);
   },
@@ -29,4 +43,4 @@ const handlers = {
   },
 };
 
-module.exports.handlers = handlers;
+module.exports.logic = logic;
