@@ -1,7 +1,7 @@
 const {
   setMyCommandsList,
   deleteMyCommandsList,
-} = require("./botCommandsManager.js");
+} = require("./commandsManager.js");
 const { commands } = require("./data.js");
 
 setMyCommandsList(commands);
