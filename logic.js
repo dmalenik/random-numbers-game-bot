@@ -21,7 +21,7 @@ const logic = {
       });
     }, 100);
   },
-  handleGameCallbackQuery: function (context, row, column, DB) {
+  handleGameCallbackQuery: function (context, row, column, DB, gameOptions) {
     let text =
       context.update.callback_query.message.reply_markup.inline_keyboard[row][
         column
@@ -31,8 +31,16 @@ const logic = {
 
     if (current === toCompare) {
       context.reply("You win!");
+      return setTimeout(
+        () => context.reply("Try again", { reply_markup: callStart }),
+        300
+      );
     } else {
       context.reply("You lose!");
+      return setTimeout(
+        () => context.reply("Try again", { reply_markup: gameOptions }),
+        300
+      );
     }
   },
   handleInfo: function (context) {
