@@ -1,13 +1,4 @@
-const logic = {
-  handleStart: function (context, chatID) {
-    context.api.sendPhoto(
-      chatID,
-      "https://tlgrm.eu/_/stickers/6a3/497/6a34971d-6648-37c2-8f2b-8940f65ba906/8.jpg"
-    );
-    setTimeout(() => {
-      context.reply(`Hi, ${context.from.first_name}!`);
-    }, 100);
-  },
+const gameLogic = {
   handleGame: function (context, chatID, gameOptions, DB) {
     context.reply("Try to guess the number from 0 to 9");
 
@@ -21,7 +12,7 @@ const logic = {
       });
     }, 100);
   },
-  handleGameCallbackQuery: function (context, row, column, DB, tryAgain) {
+  handleGameCallbackQuery: function (context, row, column, DB, playAgainBtn) {
     let button =
       context.update.callback_query.message.reply_markup.inline_keyboard[row][
         column
@@ -33,15 +24,9 @@ const logic = {
       context.reply("You win!");
     } else {
       context.reply("You lose!");
-      context.reply("Try again", { reply_markup: tryAgain });
+      context.reply("Try again", { reply_markup: playAgainBtn });
     }
-  },
-  handleInfo: function (context) {
-    context.reply(`Your name is ${context.from.first_name}`);
-  },
-  handleDefault: function (context) {
-    context.reply("Sorry, I don't know this command");
   },
 };
 
-module.exports.logic = logic;
+module.exports.gameLogic = gameLogic;

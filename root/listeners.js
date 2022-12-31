@@ -1,11 +1,15 @@
 const { bot } = require("./bot.js");
-const { gameOptions } = require("./game.js");
-const { commands } = require("./data.js");
-const { logic } = require("./logic.js");
+const { gameOptions } = require("../game/gameOptions.js");
+const { commands } = require("../commands/commands-list.js");
+const { commandsLogic } = require("../logic/commandsLogic");
+const { gameLogic } = require("../logic/gameLogic.js");
 const { DB } = require("./DB.js");
 
 const [start, info, game] = commands;
-const { handleStart, handleInfo, handleDefault, handleGame } = logic;
+const { handleStart, handleInfo, handleDefault } = commandsLogic;
+const { handleGame } = gameLogic;
+
+bot.use(gameOptions);
 
 bot.on(["::bot_command", "message:text"], (ctx) => {
   let text = ctx.message.text;
