@@ -7,7 +7,7 @@ const { DB } = require("./DB.js");
 const [start, info, game] = commands;
 const { handleStart, handleInfo, handleDefault, handleGame } = logic;
 
-bot.on("::bot_command", (ctx) => {
+bot.on(["::bot_command", "message:text"], (ctx) => {
   let text = ctx.message.text;
   let chatId = ctx.chat.id;
 
