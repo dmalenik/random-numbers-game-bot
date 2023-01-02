@@ -1,5 +1,6 @@
 const { bot } = require("./bot.js");
-const { gameOptions } = require("../game/gameOptions.js");
+const { gameBtns } = require("../game/gameBtns.js");
+const { playAgainBtn } = require("../game/playAgainBtn.js");
 const { commands } = require("../commands/commands-list.js");
 const { commandsLogic } = require("../logic/commandsLogic");
 const { gameLogic } = require("../logic/gameLogic.js");
@@ -7,9 +8,7 @@ const { DB } = require("./DB.js");
 
 const [start, info, game] = commands;
 const { handleStart, handleInfo, handleDefault } = commandsLogic;
-const { handleGame } = gameLogic;
-
-bot.use(gameOptions);
+const { handleGame, respondToCallbackQuery } = gameLogic;
 
 bot.on(["::bot_command", "message:text"], (ctx) => {
   let text = ctx.message.text;
@@ -20,7 +19,7 @@ bot.on(["::bot_command", "message:text"], (ctx) => {
       handleStart(ctx, chatId);
       break;
     case `/${game.command}`:
-      handleGame(ctx, chatId, gameOptions, DB);
+      handleGame(ctx, chatId, DB, gameBtns);
       break;
     case `/${info.command}`:
       handleInfo(ctx);
@@ -30,10 +29,11 @@ bot.on(["::bot_command", "message:text"], (ctx) => {
   }
 });
 
-bot.callbackQuery("/game", (ctx) => {
-  let chatId = ctx.chat.id;
+bot.on("callback_query", (ctx) => {
+  let data = parseInt(ctx.callbackQuery.data, 10);
+  let [randomNumber] = Object.values(DB);
 
-  return handleGame(ctx, chatId, gameOptions, DB);
+  respondToCallbackQuery(ctx, data, randomNumber, playAgainBtn);
 });
 
 bot.start();
