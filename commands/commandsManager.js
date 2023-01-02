@@ -1,4 +1,4 @@
-const { bot } = require("./bot.js");
+const { bot } = require("../root/bot.js");
 
 async function getMyCommandsList() {
   let response = await bot.api.getMyCommands();
@@ -22,4 +22,3 @@ async function setMyCommandsList(commands) {
 module.exports.getMyCommandsList = getMyCommandsList;
 module.exports.deleteMyCommandsList = deleteMyCommandsList;
 module.exports.setMyCommandsList = setMyCommandsList;
-console.log(module.exports);
