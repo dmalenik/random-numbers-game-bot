@@ -12,13 +12,12 @@ const gameLogic = {
       });
     }, 100);
   },
-  respondToCallbackQuery: function (ctx, data, randomNumber, playAgainBtn) {
-    if (data === randomNumber) {
+  isWinner: function (ctx, currentNumber, randomNumber, playAgainBtn) {
+    if (currentNumber === randomNumber) {
       ctx.reply("You win!");
     } else {
       ctx.reply("You lose!");
-
-      return ctx.reply("Play again", { reply_markup: playAgainBtn });
+      ctx.reply("Play again", { reply_markup: playAgainBtn });
     }
   },
 };

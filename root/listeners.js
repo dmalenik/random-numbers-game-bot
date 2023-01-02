@@ -8,7 +8,7 @@ const { DB } = require("./DB.js");
 
 const [start, info, game] = commands;
 const { handleStart, handleInfo, handleDefault } = commandsLogic;
-const { handleGame, respondToCallbackQuery } = gameLogic;
+const { handleGame, isWinner } = gameLogic;
 
 bot.on(["::bot_command", "message:text"], (ctx) => {
   let text = ctx.message.text;
@@ -29,11 +29,37 @@ bot.on(["::bot_command", "message:text"], (ctx) => {
   }
 });
 
-bot.on("callback_query", (ctx, playAgainBtn) => {
-  let data = parseInt(ctx.callbackQuery.data, 10);
-  let [randomNumber] = Object.values(DB);
+bot.on("callback_query", (ctx) => {
+  let data = ctx.callbackQuery.data;
 
-  respondToCallbackQuery(ctx, data, randomNumber, playAgainBtn);
+  switch (data) {
+    case "1":
+    case "2":
+    case "3":
+    case "4":
+    case "5":
+    case "6":
+    case "7":
+    case "8":
+    case "9":
+    case "0":
+      {
+        let currentNumber = parseInt(data, 10);
+        let [randomNumber] = Object.values(DB);
+
+        isWinner(ctx, currentNumber, randomNumber, playAgainBtn);
+      }
+      break;
+    case "/game":
+      {
+        let chatId = ctx.chat.id;
+
+        handleGame(ctx, chatId, DB, gameBtns);
+      }
+      break;
+    default:
+      "Sorry, I don't know how to answer your query";
+  }
 });
 
 bot.start();
