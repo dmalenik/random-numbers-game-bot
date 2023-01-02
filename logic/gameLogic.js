@@ -18,9 +18,7 @@ const gameLogic = {
     } else {
       ctx.reply("You lose!");
 
-      return ctx.reply("Play again", {
-        reply_markup: playAgainBtn,
-      });
+      return ctx.reply("Play again", { reply_markup: playAgainBtn });
     }
   },
 };

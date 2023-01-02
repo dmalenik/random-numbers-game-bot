@@ -29,7 +29,7 @@ bot.on(["::bot_command", "message:text"], (ctx) => {
   }
 });
 
-bot.on("callback_query", (ctx) => {
+bot.on("callback_query", (ctx, playAgainBtn) => {
   let data = parseInt(ctx.callbackQuery.data, 10);
   let [randomNumber] = Object.values(DB);
 
