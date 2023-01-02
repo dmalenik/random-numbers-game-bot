@@ -15,6 +15,7 @@ const gameLogic = {
   isWinner: function (ctx, currentNumber, randomNumber, playAgainBtn) {
     if (currentNumber === randomNumber) {
       ctx.reply("You win!");
+      ctx.replyWithAnimation("https://tenor.com/bAseM.gif");
     } else {
       ctx.reply("You lose!");
       setTimeout(
