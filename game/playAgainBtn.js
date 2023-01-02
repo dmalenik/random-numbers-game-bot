@@ -1,7 +1,5 @@
-const { InlineKeyboard } = require("grammy");
-
-const playAgainBtn = new InlineKeyboard();
-
-playAgainBtn.text("Play again", "/game");
+const playAgainBtn = {
+  inline_keyboard: [[{ text: "Play again", calback_data: "/game" }]],
+};
 
 module.exports.playAgainBtn = playAgainBtn;
