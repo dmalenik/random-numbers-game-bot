@@ -1,4 +1,4 @@
-const gameBtns = {
+const buttons = {
   inline_keyboard: [
     [
       { text: "1", callback_data: "1" },
@@ -19,4 +19,4 @@ const gameBtns = {
   ],
 };
 
-module.exports.gameBtns = gameBtns;
+module.exports.buttons = buttons;

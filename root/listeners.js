@@ -1,9 +1,9 @@
 const { bot } = require("./bot.js");
-const { gameBtns } = require("../game/gameBtns.js");
+const { buttons } = require("../game/buttons.js");
 const { playAgainBtn } = require("../game/playAgainBtn.js");
-const { commands } = require("../commands/commands-list.js");
-const { commandsLogic } = require("../logic/commandsLogic");
-const { gameLogic } = require("../logic/gameLogic.js");
+const { commands } = require("../commands/list.js");
+const { commandsLogic } = require("../logic/commands.js");
+const { gameLogic } = require("../logic/game.js");
 const { DB } = require("./DB.js");
 
 const [start, info, game] = commands;
@@ -19,7 +19,7 @@ bot.on(["::bot_command", "message:text"], (ctx) => {
       handleStart(ctx, chatId);
       break;
     case `/${game.command}`:
-      handleGame(ctx, chatId, DB, gameBtns);
+      handleGame(ctx, chatId, DB, buttons);
       break;
     case `/${info.command}`:
       handleInfo(ctx);
@@ -54,7 +54,7 @@ bot.on("callback_query", (ctx) => {
       {
         let chatId = ctx.chat.id;
 
-        handleGame(ctx, chatId, DB, gameBtns);
+        handleGame(ctx, chatId, DB, buttons);
       }
       break;
     default:
