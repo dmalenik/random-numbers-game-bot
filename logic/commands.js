@@ -6,7 +6,7 @@ const commandsLogic = {
     );
     setTimeout(() => {
       context.reply(`Hi, ${context.from.first_name}!`);
-    }, 100);
+    }, 300);
   },
   handleInfo: function (context) {
     context.reply(`Your name is ${context.from.first_name}`);

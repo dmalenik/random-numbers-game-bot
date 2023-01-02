@@ -10,14 +10,17 @@ const gameLogic = {
       ctx.reply("Try to guess", {
         reply_markup: gameInterface,
       });
-    }, 100);
+    }, 300);
   },
   isWinner: function (ctx, currentNumber, randomNumber, playAgainBtn) {
     if (currentNumber === randomNumber) {
       ctx.reply("You win!");
     } else {
       ctx.reply("You lose!");
-      ctx.reply("Play again", { reply_markup: playAgainBtn });
+      setTimeout(
+        () => ctx.reply("Play again", { reply_markup: playAgainBtn }),
+        300
+      );
     }
   },
 };
