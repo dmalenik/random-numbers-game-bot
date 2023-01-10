@@ -1,24 +1,32 @@
 {
-  "name": "random-numbers-game-bot",
-  "version": "1.0.0",
-  "description": "Guess the number a bot provided",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/dmalenik/random-numbers-game-bot.git"
-  },
-  "keywords": [],
-  "author": "Dmytro Malenik",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/dmalenik/random-numbers-game-bot/issues"
-  },
-  "homepage": "https://github.com/dmalenik/random-numbers-game-bot#readme",
-  "dependencies": {
-    "@grammyjs/menu": "^1.1.2",
-    "grammy": "^1.12.1"
-  }
+    "name": "random-numbers-game-bot",
+    "version": "1.0.0",
+    "description": "Guess the number a bot provided",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "bot": "node ./root/listeners.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/dmalenik/random-numbers-game-bot.git"
+    },
+    "keywords": [],
+    "author": "Dmytro Malenik",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/dmalenik/random-numbers-game-bot/issues"
+    },
+    "homepage": "https://github.com/dmalenik/random-numbers-game-bot#readme",
+    "devDependencies": {
+        "eslint": "^8.31.0",
+        "eslint-config-airbnb-base": "^15.0.0",
+        "eslint-config-prettier": "^8.6.0",
+        "eslint-plugin-import": "^2.26.0",
+        "prettier": "2.8.2"
+    },
+    "dependencies": {
+        "@grammyjs/menu": "^1.1.2",
+        "grammy": "^1.13.0"
+    }
 }

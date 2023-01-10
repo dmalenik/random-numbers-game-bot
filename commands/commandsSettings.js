@@ -1,4 +1,4 @@
-const { setMyCommandsList } = require("./commandsManager.js");
-const { commands } = require("./list.js");
+const { setMyCommandsList } = require('./commandsManager.js')
+const { commands } = require('./list.js')
 
-setMyCommandsList(commands);
+setMyCommandsList(commands)
