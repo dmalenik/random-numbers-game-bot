@@ -18,12 +18,14 @@
   },
   "homepage": "https://github.com/dmalenik/random-numbers-game-bot#readme",
   "devDependencies": {
-    "@grammyjs/menu": "^1.1.2",
     "eslint": "^8.31.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-prettier": "^8.6.0",
     "eslint-plugin-import": "^2.26.0",
-    "grammy": "^1.13.0",
     "prettier": "2.8.2"
+  },
+  "dependencies": {
+    "@grammyjs/menu": "^1.1.2",
+    "grammy": "^1.13.0"
   }
 }
