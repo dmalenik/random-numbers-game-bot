@@ -2,7 +2,7 @@
     "name": "random-numbers-game-bot",
     "version": "1.0.0",
     "description": "Guess the number a bot provided",
-    "main": "index.js",
+    "main": "./root/listeners.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
         "bot": "node ./root/listeners.js"
@@ -11,7 +11,12 @@
         "type": "git",
         "url": "git+https://github.com/dmalenik/random-numbers-game-bot.git"
     },
-    "keywords": [],
+    "keywords": [
+        "Telegram",
+        "bot",
+        "numbers",
+        "game"
+    ],
     "author": "Dmytro Malenik",
     "license": "ISC",
     "bugs": {
