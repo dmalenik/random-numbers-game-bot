@@ -5,6 +5,7 @@
     "main": "./root/listeners.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
+    "bot": "ts-node ./src/bot.ts",
     "lint": "gts lint",
     "clean": "gts clean",
     "compile": "tsc",
