@@ -5,7 +5,13 @@
     "main": "./root/listeners.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
-        "bot": "node ./root/listeners.js"
+    "lint": "gts lint",
+    "clean": "gts clean",
+    "compile": "tsc",
+    "fix": "gts fix",
+    "prepare": "npm.cmd run compile",
+    "pretest": "npm.cmd run compile",
+    "posttest": "npm.cmd run lint"
     },
     "repository": {
         "type": "git",
