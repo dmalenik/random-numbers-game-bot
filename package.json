@@ -2,6 +2,7 @@
     "name": "random-numbers-game-bot",
     "version": "1.0.0",
     "description": "Guess the number a bot provided",
+  "main": "./src/bot.ts",
   "type": "module",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
