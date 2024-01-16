@@ -5,7 +5,7 @@
     "main": "./src/bot.ts",
     "scripts": {
         "bot": "ts-node ./src/bot.ts",
-        "test": "npx jest ./src/tests",
+        "test": "npx jest",
         "lint": "gts lint",
         "clean": "gts clean",
         "compile": "tsc",
