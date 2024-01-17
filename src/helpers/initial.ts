@@ -1,4 +1,11 @@
-import type { InitialFn } from './types/InitialFn'
+interface SessionData {
+    rand: number
+    tries: number
+}
+
+interface InitialFn {
+    (): SessionData
+}
 
 const initial: InitialFn = () => {
     return {
