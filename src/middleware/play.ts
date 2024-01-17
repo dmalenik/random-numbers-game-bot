@@ -1,6 +1,11 @@
 import type { Context, SessionFlavor } from 'grammy'
 import type { NextFunction } from 'grammy'
 import inlineKeyboard from '../view/inlineKeyboard'
+
+const data = {
+    action: 'Choose a random number',
+    range: [0, 9],
+}
 interface SessionData {
     rand: number
     tries: number

@@ -1,6 +1,13 @@
 import type { Context, SessionFlavor } from 'grammy'
 import type { NextFunction } from 'grammy'
 import inlineKeyboard from '../view/inlineKeyboard'
+
+const data = {
+    info: 'You win! Number of tries:',
+    memeURL: 'https://media1.tenor.com/m/mvegoURYtSUAAAAC/jonah-hill-omg.gif',
+    action: 'Try again',
+}
+
 interface SessionData {
     rand: number
     tries: number
