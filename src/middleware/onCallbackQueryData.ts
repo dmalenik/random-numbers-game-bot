@@ -1,6 +1,16 @@
+import type { Context, SessionFlavor } from 'grammy'
+import type { NextFunction } from 'grammy'
 import inlineKeyboard from '../view/inlineKeyboard'
-import bot from '../bot'
-import { MyContextMid } from '../types/MyContextMid'
+interface SessionData {
+    rand: number
+    tries: number
+}
+
+type MyContext = Context & SessionFlavor<SessionData>
+
+interface MyContextMid {
+    (ctx: MyContext, next: NextFunction): void
+}
 
 const onCallbackQueryData: MyContextMid = (obj) => {
     const data = obj.update.callback_query?.data ?? ''
