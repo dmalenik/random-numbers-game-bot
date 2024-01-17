@@ -1,5 +1,6 @@
 import type { Context, SessionFlavor } from 'grammy'
 import type { NextFunction } from 'grammy'
+import bot from '../bot'
 import inlineKeyboard from '../view/inlineKeyboard'
 
 const data = {
@@ -19,20 +20,18 @@ interface MyContextMid {
     (ctx: MyContext, next: NextFunction): void
 }
 
-const onCallbackQueryData: MyContextMid = (obj) => {
-    const data = obj.update.callback_query?.data ?? ''
-    const pressed = Number.parseInt(data)
-    const { rand } = obj.session
+const onCallbackQueryData: MyContextMid = (ctx) => {
+    const { info, memeURL, action } = data
+    const updData = ctx.update.callback_query?.data ?? ''
+    const pressed = Number.parseInt(updData)
 
-    if (pressed === rand) {
-        obj.reply(`You win! Number of tries: ${obj.session.tries}`)
-        obj.replyWithAnimation(
-            'https://media1.tenor.com/m/mvegoURYtSUAAAAC/jonah-hill-omg.gif'
-        )
+    if (pressed === ctx.session.rand) {
+        ctx.reply(`${info} ${ctx.session.tries}`)
+        ctx.replyWithAnimation(memeURL)
         bot.stop()
     } else {
-        obj.session.tries++
-        obj.reply('Try again', { reply_markup: inlineKeyboard })
+        ctx.session.tries++
+        ctx.reply(action, { reply_markup: inlineKeyboard })
     }
 }
 

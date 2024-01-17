@@ -10,6 +10,13 @@ const data = {
 interface ContextMid {
     (ctx: Context): void
 }
+
+const start: ContextMid = (ctx) => {
+    const { greeting, memeURL, action } = data
+
+    ctx.reply(`${greeting}, ${ctx.from?.first_name}!`)
+    ctx.replyWithPhoto(memeURL)
+    ctx.reply(action)
 }
 
 export default start
