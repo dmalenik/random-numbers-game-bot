@@ -1,4 +1,4 @@
-import generateRandNum from '../view/generateRandNum'
+import generateRandNum from '../services/generateRandNum'
 
 describe('checking random numbers generator function', () => {
     const rand = generateRandNum(0, 9)
