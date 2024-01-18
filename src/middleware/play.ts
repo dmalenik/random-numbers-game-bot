@@ -1,4 +1,4 @@
-import type { CommandMiddleware, Context, SessionFlavor } from 'grammy'
+import type { Context, SessionFlavor } from 'grammy'
 import generateRandNum from '../services/generateRandNum'
 import inlineKeyboard from '../view/inlineKeyboard'
 
@@ -17,7 +17,7 @@ interface SessionData {
 
 type MyContext = Context & SessionFlavor<SessionData>
 
-const play: CommandMiddleware<MyContext> = (ctx) => {
+const play = (ctx: MyContext) => {
     ctx.session.rand = generateRandNum(min, max)
     ctx.reply(action, { reply_markup: inlineKeyboard })
 }

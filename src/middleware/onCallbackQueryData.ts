@@ -1,5 +1,4 @@
 import type { Context, SessionFlavor } from 'grammy'
-import type { NextFunction } from 'grammy'
 import bot from '../bot'
 import inlineKeyboard from '../view/inlineKeyboard'
 
@@ -9,6 +8,8 @@ const data = {
     action: 'Try again',
 }
 
+const { info, memeURL, action } = data
+
 interface SessionData {
     rand: number
     tries: number
@@ -16,14 +17,9 @@ interface SessionData {
 
 type MyContext = Context & SessionFlavor<SessionData>
 
-interface MyContextMid {
-    (ctx: MyContext, next: NextFunction): void
-}
-
-const onCallbackQueryData: MyContextMid = (ctx) => {
-    const { info, memeURL, action } = data
-    const updData = ctx.update.callback_query?.data ?? ''
-    const pressed = Number.parseInt(updData)
+const onCallbackQueryData = (ctx: MyContext) => {
+    const data = ctx.update.callback_query?.data ?? ''
+    const pressed = Number.parseInt(data)
 
     if (pressed === ctx.session.rand) {
         ctx.reply(`${info} ${ctx.session.tries}`)

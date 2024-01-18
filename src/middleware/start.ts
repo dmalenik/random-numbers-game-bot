@@ -1,4 +1,4 @@
-import type { CommandMiddleware, Context } from 'grammy'
+import type { Context } from 'grammy'
 
 const data = {
     greeting: 'Hi',
@@ -9,10 +9,10 @@ const data = {
 
 const { greeting, memeURL, action } = data
 
-const greet: CommandMiddleware<Context> = async (ctx) => {
+const start = async (ctx: Context) => {
     await ctx.reply(`${greeting}, ${ctx.from?.first_name}`)
     await ctx.replyWithPhoto(memeURL)
     await ctx.reply(action)
 }
 
-export default greet
+export default start
