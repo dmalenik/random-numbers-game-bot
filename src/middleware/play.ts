@@ -1,5 +1,4 @@
-import type { Context, SessionFlavor } from 'grammy'
-import type { NextFunction } from 'grammy'
+import type { CommandMiddleware, Context, SessionFlavor } from 'grammy'
 import generateRandNum from '../services/generateRandNum'
 import inlineKeyboard from '../view/inlineKeyboard'
 
@@ -7,6 +6,10 @@ const data = {
     action: 'Choose a random number',
     range: [0, 9],
 }
+
+const { action, range } = data
+const [min, max] = range
+
 interface SessionData {
     rand: number
     tries: number
@@ -14,14 +17,7 @@ interface SessionData {
 
 type MyContext = Context & SessionFlavor<SessionData>
 
-interface MyContextMid {
-    (ctx: MyContext, next: NextFunction): void
-}
-
-const play: MyContextMid = (ctx) => {
-    const { action, range } = data
-    const [min, max] = range
-
+const play: CommandMiddleware<MyContext> = (ctx) => {
     ctx.session.rand = generateRandNum(min, max)
     ctx.reply(action, { reply_markup: inlineKeyboard })
 }
