@@ -1,4 +1,4 @@
-import type { Context } from 'grammy'
+import type { CommandMiddleware, Context } from 'grammy'
 
 const data = {
     greeting: 'Hi',
@@ -7,16 +7,12 @@ const data = {
     action: 'Press /play command to start the game',
 }
 
-interface ContextMid {
-    (ctx: Context): void
+const { greeting, memeURL, action } = data
+
+const greet: CommandMiddleware<Context> = async (ctx) => {
+    await ctx.reply(`${greeting}, ${ctx.from?.first_name}`)
+    await ctx.replyWithPhoto(memeURL)
+    await ctx.reply(action)
 }
 
-const start: ContextMid = (ctx) => {
-    const { greeting, memeURL, action } = data
-
-    ctx.reply(`${greeting}, ${ctx.from?.first_name}!`)
-    ctx.replyWithPhoto(memeURL)
-    ctx.reply(action)
-}
-
-export default start
+export default greet
