@@ -1,5 +1,6 @@
 import type { Context, SessionFlavor } from 'grammy'
 import bot from '../bot'
+import gameKeyboard from '../view/gameKeyboard'
 import inlineKeyboard from '../view/inlineKeyboard'
 
 const data = {

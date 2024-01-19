@@ -1,6 +1,6 @@
 import type { Context, SessionFlavor } from 'grammy'
 import generateRandNum from '../services/generateRandNum'
-import inlineKeyboard from '../view/inlineKeyboard'
+import gameKeyboard from '../view/gameKeyboard'
 
 const data = {
     action: 'Choose a random number',
@@ -19,7 +19,7 @@ type MyContext = Context & SessionFlavor<SessionData>
 
 const play = (ctx: MyContext) => {
     ctx.session.rand = generateRandNum(min, max)
-    ctx.reply(action, { reply_markup: inlineKeyboard })
+    ctx.reply(action, { reply_markup: gameKeyboard })
 }
 
 export default play
