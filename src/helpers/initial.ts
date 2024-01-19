@@ -3,11 +3,7 @@ interface SessionData {
     tries: number
 }
 
-interface InitialFn {
-    (): SessionData
-}
-
-const initial: InitialFn = () => {
+const initial: () => SessionData = () => {
     return {
         rand: 0,
         tries: 1,
