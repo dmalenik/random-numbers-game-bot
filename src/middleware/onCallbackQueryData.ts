@@ -10,9 +10,11 @@ const data = {
     choiceQuestion: 'Would you like to make another try?',
     choices: ['Yes!', 'No?'],
     newGame: 'Press /play command again to start a new game',
+    goodbye: 'Ok! Bye then',
 }
 
-const { info, memeURL, tryAgain, choiceQuestion, choices, newGame } = data
+const { info, memeURL, tryAgain, choiceQuestion, choices, newGame, goodbye } =
+    data
 
 interface SessionData {
     rand: number
@@ -48,6 +50,7 @@ const onCallbackQueryData = async (ctx: MyContext) => {
             if (pressed === 'Yes!') {
                 await ctx.reply(newGame)
             } else {
+                await ctx.reply(goodbye)
                 await bot.stop()
             }
 
