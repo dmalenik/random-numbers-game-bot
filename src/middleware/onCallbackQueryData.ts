@@ -20,7 +20,7 @@ interface SessionData {
 
 type MyContext = Context & SessionFlavor<SessionData>
 
-const onCallbackQueryData = (ctx: MyContext) => {
+const onCallbackQueryData = async (ctx: MyContext) => {
     const data = ctx.update.callback_query?.data ?? ''
     const state = choice.includes(data) ? 'choice' : 'game'
     let pressed = null
@@ -30,23 +30,23 @@ const onCallbackQueryData = (ctx: MyContext) => {
             pressed = Number.parseInt(data)
 
             if (pressed === ctx.session.rand) {
-                ctx.reply(`${info} ${ctx.session.tries}`)
-                ctx.replyWithAnimation(memeURL)
-                ctx.reply('Would you like to make another try?', {
+                await ctx.reply(`${info} ${ctx.session.tries}`)
+                await ctx.replyWithAnimation(memeURL)
+                await ctx.reply('Would you like to make another try?', {
                     reply_markup: choiceKeyboard,
                 })
             } else {
                 ctx.session.tries++
-                ctx.reply(tryAgain, { reply_markup: gameKeyboard })
+                await ctx.reply(tryAgain, { reply_markup: gameKeyboard })
             }
             break
         case 'choice':
             pressed = data
 
             if (pressed === 'Yes!') {
-                ctx.reply(playAgain)
+                await ctx.reply(playAgain)
             } else {
-                bot.stop()
+                await bot.stop()
             }
             break
     }
