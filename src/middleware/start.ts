@@ -10,9 +10,13 @@ const data = {
 const { greeting, memeURL, action } = data
 
 const start = async (ctx: Context) => {
-    await ctx.reply(`${greeting}, ${ctx.from?.first_name}`)
-    await ctx.replyWithPhoto(memeURL)
-    await ctx.reply(action)
+    try {
+        await ctx.reply(`${greeting}, ${ctx.from?.first_name}`)
+        await ctx.replyWithPhoto(memeURL)
+        await ctx.reply(action)
+    } catch (error) {
+        console.log(error)
+    }
 }
 
 export default start

@@ -18,9 +18,13 @@ interface SessionData {
 type MyContext = Context & SessionFlavor<SessionData>
 
 const play = (ctx: MyContext) => {
-    ctx.session.rand = generateRandNum(min, max)
-    ctx.session.tries = ctx.session.tries > 1 ? 1 : ctx.session.tries
-    ctx.reply(action, { reply_markup: gameKeyboard })
+    try {
+        ctx.session.rand = generateRandNum(min, max)
+        ctx.session.tries = ctx.session.tries > 1 ? 1 : ctx.session.tries
+        ctx.reply(action, { reply_markup: gameKeyboard })
+    } catch (error) {
+        console.log(error)
+    }
 }
 
 export default play
