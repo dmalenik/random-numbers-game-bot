@@ -14,7 +14,6 @@ interface SessionData {
     rand: number
     tries: number
 }
-
 type MyContext = Context & SessionFlavor<SessionData>
 
 const play = (ctx: MyContext) => {
