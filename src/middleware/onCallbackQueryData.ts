@@ -48,11 +48,9 @@ const onCallbackQueryData = async (ctx: MyContext) => {
 
             break
         case 'choice':
-            try {
-                pressed = data
-                // make a copy of current stats
-                // place them in stats DB
+            pressed = data
 
+            try {
                 if (pressed === 'Yes!') {
                     await ctx.reply(newGame)
                 } else {
