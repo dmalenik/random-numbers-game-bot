@@ -14,15 +14,16 @@ interface SessionData {
 }
 type MyContext = Context & SessionFlavor<SessionData>
 
-const { token } = process.env
-const bot = new Bot<MyContext>(token!)
+const { TOKEN, USER, HOST, DATABASE, PASSWORD, PORT } = process.env
+
+const bot = new Bot<MyContext>(TOKEN!)
 
 const client = new Client({
-    user: 'postgres',
-    host: '127.0.0.1',
-    database: 'sessions',
-    password: '123456',
-    port: 5432,
+    user: USER,
+    host: HOST,
+    database: DATABASE,
+    password: PASSWORD,
+    port: +PORT!,
 })
 
 const init = async () => {
